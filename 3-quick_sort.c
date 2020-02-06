@@ -42,36 +42,36 @@ void my_quick_sort(int *array, int low, int high, int size)
  */
 int partition(int *array, int low, int high, int size)
 {
+	int pivot = array[high];
 	int j;
 	int i = low - 1;
 
 	for (j = low; j < high; j++)
 	{
-		if (array[j] < array[high])
+		if (array[j] < pivot)
 		{
 			i++;
-			if (array[i] != array[j])
-			{
-				_swap(&array[i], &array[j]);
-				print_array(array, size);
-			}
+			if (array[j] != array[i])
+				_swap(&array[i], &array[j], array, size);
 		}
 	}
-	_swap(&array[i + 1], &array[high]);
-	if (array[i] != array[j])
-	{
-		print_array(array, size);
-	}
-	return (i);
+	_swap(&array[i + 1], &array[high], array, size);
+	return (i + 1);
 }
 /**
  * _swap - swap the index of array
  * @a: value a of array
  * @b: value b of array
+ * @array: aray to print
+ * @size: size of array
  */
-void _swap(int *a, int *b)
+void _swap(int *a, int *b, int *array, size_t size)
 {
-	int t = *a;
-	*a = *b;
-	*b = t;
+	if (a != b)
+	{
+		int t = *a;
+		*a = *b;
+		*b = t;
+		print_array(array, size);
+	}
 }
