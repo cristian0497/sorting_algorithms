@@ -67,7 +67,7 @@ int partition(int *array, int low, int high, int size)
  */
 void _swap(int *a, int *b, int *array, size_t size)
 {
-	if (a != b)
+	if (a[0] != b[0])
 	{
 		int t = *a;
 		*a = *b;
