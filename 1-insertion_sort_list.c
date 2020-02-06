@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdlib.h>
 /**
  * insertion_sort_list - algorithm sorter
  * @list: Doubl linked list
@@ -6,8 +7,11 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *aux, *back, *nxt, *head = (*list);
+	listint_t *aux, *back, *nxt, *head;
 
+	if ((list) == NULL || (*list) == NULL ||  (*list)->next == NULL)
+		return;
+	head = (*list);
 	while (head != NULL && head->next && (*list))
 	{
 		if (head->n > head->next->n)
