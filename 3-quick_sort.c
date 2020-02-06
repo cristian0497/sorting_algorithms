@@ -8,7 +8,7 @@
 void quick_sort(int *array, size_t size)
 {
 	int low = 0;
-	int high = (int)size - 1;
+	int high = size - 1;
 
 	if (size < 2)
 		return;
@@ -50,15 +50,19 @@ int partition(int *array, int low, int high, int size)
 		if (array[j] < array[high])
 		{
 			i++;
-			_swap(&array[i], &array[j]);
 			if (array[i] != array[j])
+			{
+				_swap(&array[i], &array[j]);
 				print_array(array, size);
+			}
 		}
 	}
 	_swap(&array[i + 1], &array[high]);
 	if (array[i] != array[j])
+	{
 		print_array(array, size);
-	return (i + 1);
+	}
+	return (i);
 }
 /**
  * _swap - swap the index of array
